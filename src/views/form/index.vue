@@ -52,7 +52,7 @@ export default {
   data() {
     return {
       form: {
-        name: '',
+        name: 'my',
         region: '',
         date1: '',
         date2: '',
