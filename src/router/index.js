@@ -38,23 +38,77 @@ export const constantRouterMap = [
   },
 
   {
+    path: '/dataMgr',
+    component: Layout,
+    redirect: '/data/upload',
+    name: 'DataMgr',
+    meta: { title: '数据管理', icon: 'example' },
+    children: [
+      {
+        path: 'upload',
+        name: 'Upload',
+        component: () => import('@/views/med/coder/upload'),
+        meta: { title: '上传管理', icon: 'tree' }
+      },
+      {
+        hidden: true,
+        path: 'mapping',
+        name: 'Mapping',
+        component: () => import('@/views/med/coder/mapping'),
+        meta: { title: 'mapping', icon: 'tree' }
+      },
+      {
+        path: 'data',
+        name: 'Data',
+        component: () => import('@/views/med/data/data'),
+        meta: { title: '数据查询', icon: 'tree' }
+      },
+      {
+        hidden: true,
+        path: 'detail',
+        name: 'Detail',
+        component: () => import('@/views/med/data/detail'),
+        meta: { title: 'detail', icon: 'tree' }
+      }
+    ]
+  },
+
+  {
     path: '/example',
     component: Layout,
     redirect: '/example/table',
     name: 'Example',
-    meta: { title: 'Example', icon: 'example' },
+    meta: { title: '权限管理', icon: 'example' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        hidden: true,
+        path: 'userAdd',
+        name: 'UserAdd',
+        component: () => import('@/views/acl/user/userAdd')
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        path: 'userList',
+        name: 'UserList',
+        component: () => import('@/views/acl/user/userList'),
+        meta: { title: '用户管理', icon: 'tree' }
+      },
+      {
+        path: 'organize',
+        name: 'Organize',
+        component: () => import('@/views/acl/organize/index'),
+        meta: { title: '机构管理', icon: 'tree' }
+      },
+      {
+        path: 'role',
+        name: 'Role',
+        component: () => import('@/views/acl/role/index'),
+        meta: { title: '角色管理', icon: 'tree' }
+      },
+      {
+        path: 'resource',
+        name: 'Resource',
+        component: () => import('@/views/acl/resource/index'),
+        meta: { title: '资源管理', icon: 'tree' }
       }
     ]
   },
